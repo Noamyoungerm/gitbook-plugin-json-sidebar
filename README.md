@@ -1,40 +1,46 @@
 GitBook Sample Plugin
 ==============
 
-This is a model for GitBook plugins.
+# Gitbook plugin json-sidebar
 
-## How GitBook plugin works?
+This plugin creates a file `sidebar.json` that contains all chapters. 
 
-A plugin for GitBook is a node package that can be published on [NPM](http://www.npmjs.org). It has to follow the name convention: `gitbook-plugin-*name*`.
+No configuration options.
 
-### package.json
-
-#### name
-
-The package name should begin with ```gitbook-plugin-```.
-
-Examples: `gitbook-plugin-mixpanel`, `gitbook-plugin-googleanalytics`.
-
-#### engine
-
-The package.json should contain a `engine` field using [the standard norm](https://www.npmjs.org/doc/json.html#engines).
+Sample output:
 
 ```
-"engines": {
-    "gitbook": "*"
-}
+  [{
+    "index": 0,
+    "title": "User Guide",
+    "introduction": true,
+    "next": {
+      "path": "User Guide/Getting Started/Getting_Started.md",
+      "title": "Getting Started",
+      "level": "1",
+      "exists": true,
+      "external": false,
+      "introduction": false
+    },
+    "level": "0",
+    "path": "README.md",
+    "percent": 0,
+    "done": true
+  }, {
+    "index": 1,
+    "title": "Getting Started",
+    "introduction": false,
+    "prev": {
+      "path": "README.md",
+      "title": "User Guide",
+      "level": "0",
+      "exists": true,
+      "external": false,
+      "introduction": true
+    },
+    "level": "1",
+    "path": "User Guide/Getting Started/Getting_Started.md",
+    "percent": 100,
+    "done": true
+  }]
 ```
-
-For example if you want your plugin to supports only GitBook version supperior to 0.3.1:
-
-```
-"engines": {
-    "gitbook": ">=0.3.1"
-}
-```
-
-### entry point
-
-The plugin entry point should return an object with some metadata.
-
-
